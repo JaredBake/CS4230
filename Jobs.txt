@@ -1,0 +1,23 @@
+Diego: Test plan
+Jared: Equivilance Classes
+Maya: List of tests?
+
+Obiously work on what you want to but these should be good starting spots
+
+Turn in the following:
+• Your source code (30)
+• A working executable module. It must execute on other people’s PCs.
+• Your test plan. (80) (Scope 5, Strategy 50, Resource 5, timeline 10, risk 10)
+• A list of the tests you wrote. Indicate which were executed. (20)
+• Addenda to the test plan, if appropriate.
+• Changes, additions, or clarifications to the specifications you made.
+• Instructions for using your program. (20)
+Prepare a package as described below to give to your tester. You have the responsibility
+to give it to your tester no later than one day after the due date.
+Grading:
+• The program has to work. After all, that is an indication of how good your testing
+was.
+• Your test plan should use an approach that is appropriate for the problem. It
+should be well-thought-out and complete.
+• Your test cases should be complete – I should not see any obvious areas you
+missed.
