@@ -1,7 +1,6 @@
 package src.bank;
 
 import java.util.*;
-
 import src.bank.model.*;
 
 public class MainBank {
@@ -29,8 +28,7 @@ public class MainBank {
 
             switch (choice) {
                 case 1 -> {
-                    System.out.print("Enter customer name: ");
-                    String name = in.nextLine().trim();
+                    String name = readNonEmptyLine("Enter customer name: ");
                     int acct = bank.createCustomer(name);
                     System.out.println("Created customer #" + acct);
                 }
@@ -66,7 +64,7 @@ public class MainBank {
                     if (c != null) {
                         c.printLoans();
                         System.out.print("Loan ID to pay: ");
-                        int id = in.nextInt(); in.nextLine();
+                        int id = readInt(1, Integer.MAX_VALUE); // was nextInt()
                         System.out.print("Payment amount: ");
                         double amt = readDouble(0, Double.MAX_VALUE);
                         c.makeLoanPayment(id, amt);
@@ -84,7 +82,7 @@ public class MainBank {
 
     private static Customer pickCustomer(Bank bank) {
         System.out.print("Enter account number: ");
-        int acct = in.nextInt(); in.nextLine();
+        int acct = readInt(0, Integer.MAX_VALUE); // was nextInt() + nextLine()
         Customer c = bank.getCustomer(acct);
         if (c == null) {
             System.out.println("No such customer.");
@@ -92,22 +90,41 @@ public class MainBank {
         return c;
     }
 
+    private static String readNonEmptyLine(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            String s = in.nextLine().trim();
+            if (!s.isEmpty()) return s;
+            System.out.println("Input cannot be empty. Please try again.");
+        }
+    }
+
     private static double readDouble(double min, double max) {
         while (true) {
+            String line = in.nextLine().trim();
+            if (line.isEmpty()) {
+                System.out.print("Enter a value between " + min + " and " + max + ": ");
+                continue;
+            }
             try {
-                double d = Double.parseDouble(in.nextLine());
+                double d = Double.parseDouble(line);
                 if (d >= min && d <= max) return d;
-            } catch (Exception ignored) {}
+            } catch (NumberFormatException ignored) {}
             System.out.print("Enter a value between " + min + " and " + max + ": ");
         }
     }
 
     private static int readInt(int min, int max) {
         while (true) {
+            String line = in.nextLine().trim();
+            if (line.isEmpty()) {
+                System.out.print("Enter a number between " + min + " and " + max + ": ");
+                continue;
+            }
             try {
-                int i = Integer.parseInt(in.nextLine());
+                int i = Integer.parseInt(line);
                 if (i >= min && i <= max) return i;
-            } catch (Exception ignored) {}
+            } catch (NumberFormatException ignored) {}
             System.out.print("Enter a number between " + min + " and " + max + ": ");
         }
     }
