@@ -63,7 +63,7 @@ public class MainBank {
                 case 5 -> {
                     Customer c = pickCustomer(bank);
                     if (c != null) {
-                        c.printLoans();
+                        System.out.print(c.printLoans());
                         System.out.print("Loan ID to pay: ");
                         int id = readInt(1, Integer.MAX_VALUE); // was nextInt()
                         System.out.print("Payment amount: ");
@@ -72,7 +72,7 @@ public class MainBank {
                     }
                 }
                 case 6 -> bank.advanceMonth();
-                case 7 -> bank.printStatements();
+                case 7 -> System.out.print(bank.printStatements());
                 case 0 -> {
                     System.out.println("Goodbye!");
                     return;

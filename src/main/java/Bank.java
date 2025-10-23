@@ -34,17 +34,19 @@ public class Bank {
     }
 
     public void advanceMonth() {
-        System.out.println("\n>>> Advancing to next month...");
+        System.out.println("\n>>> Advancing to next month...\n");
         for (Customer c : customers.values()) {
             c.processMonthly(savingsRate / 12, loanRate / 12);
         }
         currentMonth++;
     }
 
-    public void printStatements() {
-        System.out.println("\n--- Month " + currentMonth + " Statements ---");
+    public StringBuilder printStatements() {
+        StringBuilder output = new StringBuilder();
+        output.append("\n--- Month " + currentMonth + " Statements ---\n");
         for (Customer c : customers.values()) {
-            c.printStatement();
+            output.append(c.printStatement());
         }
+        return output;
     }
 }

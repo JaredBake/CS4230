@@ -20,8 +20,10 @@ public class Savings {
         balance = Math.round(balance * 100) / 100.0;
     }
 
-    public void printSummary() {
-        System.out.println("  Savings balance: $" + fmt(balance));
+    public StringBuilder printSummary() {
+        StringBuilder output = new StringBuilder();
+        output.append("  Savings balance: $" + fmt(balance) + "\n");
+        return output;
     }
 
     // Getter for testing

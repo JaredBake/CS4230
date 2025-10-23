@@ -34,12 +34,12 @@ public class Customer {
 
     public int openLoan(double amt, double rate) {
         if (loans.size() >= MAX_LOANS) {
-            System.out.println("You already have " + MAX_LOANS + " loans!");
+            System.out.println("You already have " + MAX_LOANS + " loans!\n");
             return -1;
         }
         Loan loan = new Loan(nextLoanId++, amt, rate); 
         loans.add(loan);
-        activity.add("Opened loan #" + loan.getId() + " for $" + fmt(amt));
+        activity.add("Opened loan #" + loan.getId() + " for $" + fmt(amt) + "\n");
         return loan.getId();
     }
 
@@ -53,25 +53,27 @@ public class Customer {
         }
         
         if (loan == null) {
-            System.out.println("Loan not found.");
+            System.out.println("Loan not found.\n");
             return;
         }
         
         loan.makePayment(amt);
-        activity.add("Paid $" + fmt(amt) + " on loan #" + id);
+        activity.add("Paid $" + fmt(amt) + " on loan #\n" + id);
         
         if (loan.isClosed()) {
-            activity.add("Loan #" + id + " closed.");
+            activity.add("Loan #" + id + " closed.\n");
             loans.remove(loan);
         }
     }
 
-    public void printLoans() {
+    public StringBuilder printLoans() {
+        StringBuilder output = new StringBuilder();
         if (loans.isEmpty()) {
-            System.out.println("No active loans.");
-            return;
+            output.append("No active loans.\n");
+            return output;
         }
-        for (Loan l : loans) l.printSummary();
+        for (Loan l : loans) output.append(l.printSummary());
+        return output;
     }
 
     public void processMonthly(double savRate, double loanRate) {
@@ -79,19 +81,21 @@ public class Customer {
         for (Loan l : loans) l.applyMonthlyInterest(loanRate);
     }
 
-    public void printStatement() {
-        System.out.println("\nCustomer: " + name + " (Account #" + acct + ")");
-        savings.printSummary();
+    public StringBuilder printStatement() {
+        StringBuilder output = new StringBuilder();
+        output.append("\nCustomer: " + name + " (Account #" + acct + ")\n");
+        output.append(savings.printSummary());
         if (loans.isEmpty()) {
-            System.out.println("  No active loans.");
+            output.append("  No active loans.\n");
         } else {
-            for (Loan l : loans) l.printSummary();
+            for (Loan l : loans) output.append(l.printSummary());
         }
         if (!activity.isEmpty()) {
-            System.out.println("Recent Activity:");
-            for (String s : activity) System.out.println("  " + s);
+            output.append("Recent Activity:\n");
+            for (String s : activity) output.append("  " + s + "\n");
         }
         activity.clear();
+        return output;
     }
 
     // Getters for testing

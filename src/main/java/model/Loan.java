@@ -60,20 +60,23 @@ public class Loan {
         return delinquent ? baseMin + LATE_FEE : baseMin;
     }
 
-    public boolean isClosed() { 
-        return balance <= 0; 
+    public boolean isClosed(){
+        return balance <= 0;
     }
 
-    public void printSummary() {
-        System.out.println("  Loan #" + id + " balance: $" + fmt(balance)
-                + (delinquent ? " (Delinquent)" : ""));
+    public StringBuilder printSummary() {
+        StringBuilder output = new StringBuilder();
+        output.append(" Loan #" + id + " balance: $" + fmt(balance)
+                + (delinquent ? " (Delinquent)" : "") + "\n");
         
         // Show minimum payment due (requirement #7)
         if (balance > 0) {
             double nextInterest = balance * (annualRate / 12);
             double minPaymentDue = getMinimumPayment(nextInterest);
-            System.out.println("    Minimum payment due: $" + fmt(minPaymentDue));
+            output.append("    Minimum payment due: $" + fmt(minPaymentDue) + "\n");
         }
+
+        return output;
     }
 
     // Getters for testing
