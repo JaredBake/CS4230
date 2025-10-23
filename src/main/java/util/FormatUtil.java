@@ -1,4 +1,4 @@
-package src.bank.util;
+package util;
 
 public class FormatUtil {
     public static String fmt(double d) {

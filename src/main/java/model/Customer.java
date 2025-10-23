@@ -1,8 +1,9 @@
-package src.bank.model;
+package model;
 
-import static src.bank.util.FormatUtil.fmt;
+import static util.FormatUtil.*;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Customer {
     private static final int MAX_LOANS = 3;
@@ -104,5 +105,9 @@ public class Customer {
 
     public List<Loan> getLoans() {
         return new ArrayList<>(loans);
+    }
+
+    public String getName() {
+        return name;
     }
 }

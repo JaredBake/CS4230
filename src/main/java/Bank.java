@@ -1,8 +1,7 @@
-package src.bank;
+import java.util.HashMap;
+import java.util.Map;
 
-import java.util.*;
-
-import src.bank.model.*;
+import model.Customer;
 
 public class Bank {
     private Map<Integer, Customer> customers = new HashMap<>();
