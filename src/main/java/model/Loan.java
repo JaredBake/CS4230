@@ -1,6 +1,6 @@
-package src.bank.model;
+package model;
 
-import static src.bank.util.FormatUtil.fmt;
+import static util.FormatUtil.*;
 
 public class Loan {
     private static final double LATE_FEE = 50.0;
@@ -13,7 +13,7 @@ public class Loan {
     private double annualRate;
     private boolean delinquent = false;
     private double lastPayment = 0.0;
-    private boolean isFirstMonth = true;  // Track first month to avoid incorrect late fee
+    public boolean isFirstMonth = true;  // Track first month to avoid incorrect late fee
 
     public Loan(int id, double amount, double annualRate) {
         this.id = id;
@@ -55,7 +55,7 @@ public class Loan {
         lastPayment = 0;
     }
 
-    private double getMinimumPayment(double interest) {
+    public double getMinimumPayment(double interest) {
         double baseMin = Math.max(interest + PRINCIPAL_PERCENTAGE * principal, MIN_PAYMENT_FLOOR);
         return delinquent ? baseMin + LATE_FEE : baseMin;
     }
@@ -92,7 +92,7 @@ public class Loan {
     public double getAnnualRate() {
         return annualRate;
     }
-    
+   
     // Useful for testing - get the minimum payment that will be due
     public double calculateMinimumPaymentDue() {
         if (balance <= 0) return 0;

@@ -1,6 +1,6 @@
-package src.bank.model;
+package model;
 
-import static src.bank.util.FormatUtil.fmt;
+import static util.FormatUtil.*;
 
 public class Savings {
     private double balance = 0.0;

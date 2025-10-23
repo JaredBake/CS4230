@@ -1,7 +1,8 @@
-package src.bank;
 
-import java.util.*;
-import src.bank.model.*;
+
+import java.util.Scanner;
+
+import model.Customer;
 
 public class MainBank {
     private static final Scanner in = new Scanner(System.in);
