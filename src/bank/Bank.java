@@ -1,8 +1,8 @@
-package bank;
+package src.bank;
 
 import java.util.*;
 
-import bank.model.*;
+import src.bank.model.*;
 
 public class Bank {
     private Map<Integer, Customer> customers = new HashMap<>();

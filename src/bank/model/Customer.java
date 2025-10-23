@@ -1,6 +1,6 @@
-package bank.model;
+package src.bank.model;
 
-import static bank.util.FormatUtil.fmt;
+import static src.bank.util.FormatUtil.fmt;
 
 import java.util.*;
 

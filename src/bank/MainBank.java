@@ -1,8 +1,8 @@
-package bank;
+package src.bank;
 
 import java.util.*;
 
-import bank.model.*;
+import src.bank.model.*;
 
 public class MainBank {
     private static final Scanner in = new Scanner(System.in);
