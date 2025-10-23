@@ -29,6 +29,10 @@ public class Bank {
         return loanRate;
     }
 
+    public double getSavingsRate() {
+        return savingsRate;
+    }
+
     public void advanceMonth() {
         System.out.println("\n>>> Advancing to next month...");
         for (Customer c : customers.values()) {
