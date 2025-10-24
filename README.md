@@ -66,7 +66,7 @@ Select:
 ```bash
 WeCheatEmBank/
 ├─ src/
-│  └─ src/bank/
+│  └─ main/java/
 │     ├─ MainBank.java
 │     ├─ Bank.java
 │     ├─ util/FormatUtil.java
@@ -74,15 +74,18 @@ WeCheatEmBank/
 │        ├─ Customer.java
 │        ├─ Loan.java
 │        └─ Savings.java
+|  └─ test/java/
+|     └─ model/
+|        ├─ CustomerTest.java
+|        ├─ LoanTest.java
+|        └─ SavingsTest.java
+|     └─ Integration
+|        └─ BankIntegrationTest.java
+|     └─ BankTest.java
 ├─ out/
 │  └─ (compiled .class files)
 ├─ dist/
 │  └─ WeCheatEmBank.jar
-├─ tests/
-│  ├─ test_plan.docx
-│  ├─ test_cases.xlsx
-│  ├─ test_results.docx
-│  └─ addenda.docx
 ├─ MANIFEST.MF
 └─ README.md
 ```
