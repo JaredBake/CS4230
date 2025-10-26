@@ -6,13 +6,12 @@ import model.Customer;
 
 public class MainBank {
     private static final Scanner in = new Scanner(System.in);
+    public static final int LOAN_INTEREST_RATE = 18;
 
     public static void main(String[] args) {
         System.out.println("--- Welcome to WeCheatEm Bank ---");
-        System.out.print("Enter loan annual interest rate (6.0 - 18.0): ");
-        double loanRate = readDouble(6.0, 18.0);
 
-        Bank bank = new Bank(loanRate);
+        Bank bank = new Bank(LOAN_INTEREST_RATE);
 
         while (true) {
             System.out.println("\n--- Main Menu ---");
